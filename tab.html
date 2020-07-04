@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab组件</title>
+    <link rel="stylesheet" href="./tab/tab.css" />
+  </head>
+  <body>
+    <div class="tabs xxx">
+      <ol class="tabs-bar">
+        <li>第一条</li>
+        <li>第二条</li>
+        <li>第三条</li>
+      </ol>
+      <ol class="tabs-content">
+        <li>content 1</li>
+        <li>content 2</li>
+        <li>content 3</li>
+      </ol>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      // function Tabs(selector) {
+      //   // this.__proto__ === Tabs.prototype // true
+      //   this.elements = $(selector)
+      //   this.init()
+      //   this.bindEvents()
+      // }
+
+      // Tabs.prototype.init = function() {
+      //   this.elements.each(function(index, element) {
+      //     $(element).children('.tabs-bar').children('li').eq(0).addClass('active')
+      //     $(element).children('.tabs-content').children('li').eq(0).addClass('active')
+      //   })
+      // }
+
+      // Tabs.prototype.bindEvents = function() {
+      //   this.elements.on('click', '.tabs-bar > li', function(e) {
+      //     var $li = $(e.currentTarget)
+      //     $li.addClass('active').siblings().removeClass('active')
+      //     var index = $li.index()
+      //     var $content = $li.closest('.tabs').find('.tabs-content>li').eq(index)
+      //     $content.addClass('active').siblings().removeClass('active')
+      //   })
+      // }
+
+      class Tabs {
+        constructor(selector) {
+          this.elements = $(selector);
+          this.init();
+          this.bindEvents();
+        }
+        init() {
+          this.elements.each(function (index, element) {
+            $(element)
+              .children(".tabs-bar")
+              .children("li")
+              .eq(0)
+              .addClass("active");
+            $(element)
+              .children(".tabs-content")
+              .children("li")
+              .eq(0)
+              .addClass("active");
+          });
+        }
+        bindEvents() {
+          this.elements.on("click", ".tabs-bar > li", function (e) {
+            var $li = $(e.currentTarget);
+            $li.addClass("active").siblings().removeClass("active");
+            var index = $li.index();
+            var $content = $li
+              .closest(".tabs")
+              .find(".tabs-content>li")
+              .eq(index);
+            $content.addClass("active").siblings().removeClass("active");
+          });
+        }
+      }
+
+      var tabs = new Tabs(".xxx");
+    </script>
+  </body>
+</html>
