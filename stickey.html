@@ -43,6 +43,27 @@
         constructor(selector, px) {
           this.selements = $(selector);
           this.offset = px;
+          this.offsets = [];
+          this.cacheOffsets();
+          this.listenToScroll();
+        }
+        cacheOffsets() {
+          this.elements.each((index, element) => {
+            this.offsets[index] = $(element).offset();
+          });
+        }
+        listenToScroll() {
+          $(window).on("scroll", () => {
+            var scrollY = window.scrollY;
+            this.elements.each((index, element) => {
+              var $element = $(element);
+              if (scrollY + this.offset > this.offsets[index].top) {
+                $element.addClass("sticky");
+              } else {
+                $element.removeClass("sticky");
+              }
+            });
+          });
         }
       }
     </script>
