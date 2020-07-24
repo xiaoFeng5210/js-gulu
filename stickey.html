@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #topbar {
+        background: green;
+        height: 60px;
+        color: white;
+        text-align: center;
+      }
+      #topbar.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      main {
+        background: #ddd;
+        height: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- sticky组件精髓，使用div占位 -->
+    <div class="topbarPlaceholder">
+      <div id="topbar">
+        topbar
+      </div>
+    </div>
+    <main>
+      主要内容
+    </main>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      class Sticky {
+        constructor(selector, px) {
+          this.selements = $(selector);
+          this.offset = px;
+        }
+      }
+    </script>
+  </body>
+</html>
