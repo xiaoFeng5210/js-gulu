@@ -17,16 +17,30 @@
           let nodes = document.querySelectorAll(selsector);
           nodes.forEach((node, index) => (this[index] = node));
           this.length = nodes.length;
-        },
-
-        addClass: function () {
-          console.log(this);
-          console.log("add Class");
-          return this;
-        },
+        }
       };
 
       hQuery.fn.init.prototype = hQuery.fn;
+
+      hQuery.extend = hQuery.fn.extend = function(obj) {
+          for (let key in obj) {
+              this[key] = obj[key]
+          }
+      }
+
+      hQuery.fn.extend({
+          addClass: function(class) {
+              Array.from(this).forEach(node => node.classList.add(class))
+              return this
+          }
+      })
+
+      hQuery.fn.extend({
+          removeClass: function(class) {
+              Array.from(this).forEach(node => node.classList.remove(class))
+              return this
+          }
+      })
     </script>
   </body>
 </html>
