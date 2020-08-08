@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery简易版实现</title>
+  </head>
+  <body>
+    <script>
+      var hQuery = function (selector) {
+        return new hQuery.fn.init(selector);
+      };
+      hQuery.fn = hQuery.prototype = {
+        constructor: hQuery,
+
+        init: function () {
+          let nodes = document.querySelectorAll(selsector);
+          nodes.forEach((node, index) => (this[index] = node));
+          this.length = nodes.length;
+        },
+
+        addClass: function () {
+          console.log(this);
+          console.log("add Class");
+          return this;
+        },
+      };
+
+      hQuery.fn.init.prototype = hQuery.fn;
+    </script>
+  </body>
+</html>
