@@ -32,6 +32,20 @@
   right: 0;
   transform: translateY(-50%);
 }
+.footer__link {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.link {
+    cursor: pointer;
+    color: goldenrod;
+    padding: 3px;
+    border: 1px solid brown;
+    border-radius: 5px;
+    margin-right: 5px;
+}
     </style>
 </head>
 <body>
@@ -47,7 +61,16 @@
           </li>
           <ol>
       </div>
+
+      <!-- 导航 -->
+      <div class="footer__link">
+        <div class="slide__link link">slide组件</div>
+        <div class="stickey__link link">stickey组件</div>
+        <div class="suggestion__link link">suggestion组件</div>
+        <div class="tab__link link">tab组件</div>
+      </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./public/index.js"></script>
     <script>
         class Slide {
   constructor(options) {
@@ -104,12 +127,8 @@
     this.timer = setInterval(() => {
       this.go(this.current + 1)
     }, 2000)
-    console.log('this.timer')
-
-    console.log(this)
   }
   stop() {
-    console.log(this)
     window.clearInterval(this.timer)
   }
 }
