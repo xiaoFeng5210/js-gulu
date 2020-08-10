@@ -25,10 +25,21 @@
         border-radius: 5px;
         margin-right: 5px;
       }
+      .input-style {
+        width: 150px;
+      }
+      .suggestion__ol {
+        border: 1px solid grey;
+        margin-top: -2px;
+        width: 112px;
+      }
+      ol li {
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
-    <input type="text" />
+    <input type="text" class="input-style" />
 
     <!-- 导航 -->
     <div class="footer__link">
@@ -61,7 +72,7 @@
             timerId = setTimeout(() => {
               this.search(e.currentTarget.value);
               timerId = undefined;
-            }, 1000);
+            }, 500);
           });
           this.$ol.on("click", "li", (e) => {
             this.$input.val($(e.currentTarget).text());
@@ -73,6 +84,7 @@
           this.options.search(keyword, (array) => {
             this.$wrapper.removeClass("loading");
             this.$ol.empty();
+            this.$ol.addClass("suggestion__ol");
             array.forEach((text) => {
               this.$ol.append($("<li></li>").text(text));
             });
@@ -93,7 +105,7 @@
           }
           setTimeout(() => {
             callback(array);
-          }, 1000);
+          }, 200);
         },
         loadingTemplate: "正在加载中...",
       });
